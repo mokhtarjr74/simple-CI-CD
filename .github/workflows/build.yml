@@ -7,14 +7,17 @@ on:
 
 jobs:
   build-and-deploy:
-    runs-on: alpine-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
       - name: Login to Docker Hub
-        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build, tag, and push image to Docker Hub
         id: build-image
@@ -23,7 +26,6 @@ jobs:
           DOCKER_REPOSITORY: simple-ci-cd
           IMAGE_TAG: latest
         run: |
-          docker build -t Djangoapp:$IMAGE_TAG .
-          docker tag Djangoapp:$IMAGE_TAG $DOCKER_REPOSITORY:$IMAGE_TAG
+          docker build -t $DOCKER_USERNAME/Djangoapp:$IMAGE_TAG .
           docker push $DOCKER_USERNAME/$DOCKER_REPOSITORY:$IMAGE_TAG
           echo "::set-output name=image::$DOCKER_REPOSITORY:$IMAGE_TAG"
