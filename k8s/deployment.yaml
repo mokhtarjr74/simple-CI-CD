@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: task
+  labels:
+    app: django-app
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: djando-app-deployment
+  labels:
+    app: django-app
+  namespace: task
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: django-app
+  template:
+    metadata:
+      labels:
+        app: django-app
+    spec:
+      containers:
+        - name: djando-app
+          image: mokhtar74/simple-ci-cd:latest
+          ports:
+            - containerPort: 8000
