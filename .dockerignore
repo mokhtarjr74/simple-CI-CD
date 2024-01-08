@@ -4,3 +4,4 @@ __pycache__
 *.pyd
 .github/
 Dockerfile
+k8s/
