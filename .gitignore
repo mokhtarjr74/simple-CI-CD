@@ -2,3 +2,4 @@ __pycache__
 *.pyc
 *.pyo
 *.pyd
+k8s/ingress.yaml
