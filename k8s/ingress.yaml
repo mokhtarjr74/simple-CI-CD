@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: django-app-ingress
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    kubernetes.io/ingress.class: "ingress-nginx"
 spec:
   rules:
   - host: 192.168.49.2
