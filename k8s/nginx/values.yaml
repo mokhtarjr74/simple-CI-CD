@@ -1,0 +1,8 @@
+controller:
+  service:
+    type: LoadBalancer
+  kind: Deployment
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
