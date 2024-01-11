@@ -4,3 +4,8 @@ metadata:
   name: task
   labels:
     app: django-app
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ingress-nginx
