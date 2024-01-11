@@ -5,6 +5,7 @@ from django.template import loader
 from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
+from django.core.cache import cache
 
 class IndexView(generic.ListView):
     template_name = "app/index.html"
@@ -56,3 +57,31 @@ def vote(request, question_id):
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
         return HttpResponseRedirect(reverse("polls:results", args=(question.id,)))
+
+def index(request):
+    # Check if the list of questions is in the cache
+    questions = cache.get('questions_list')
+
+    if questions is None:
+        # If not in the cache, fetch the list of questions from the database
+        questions = Question.objects.order_by('-pub_date')[:5]
+
+        # Store the list of questions in the cache for future use
+        cache.set('questions_list', questions, timeout=300)  # Set a timeout in seconds (e.g., 5 minutes)
+
+    context = {'latest_question_list': questions}
+    return render(request, 'app/index.html', context)
+
+def detail(request, question_id):
+    # Check if the question is in the cache
+    question = cache.get(f'question_{question_id}')
+
+    if question is None:
+        # If not in the cache, fetch the question from the database
+        question = get_object_or_404(Question, pk=question_id)
+
+        # Store the question in the cache for future use
+        cache.set(f'question_{question_id}', question, timeout=300)  # Set a timeout in seconds (e.g., 5 minutes)
+
+    context = {'question': question}
+    return render(request, 'app/detail.html', context)
