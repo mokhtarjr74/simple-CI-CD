@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
         - name: djando-app
-          image: mokhtar74/simple-ci-cd:V1.1
+          image: mokhtar74/simple-ci-cd:redis
           ports:
             - containerPort: 8000
