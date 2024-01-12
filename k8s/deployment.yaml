@@ -25,25 +25,30 @@ spec:
             - name: DB_ADDR
               valueFrom:
                 secretKeyRef:
+                  namespace: postgres-operator
                   name: hippo-pguser-hippo
                   key: host
             - name: DB_PORT
               valueFrom:
                 secretKeyRef:
+                  namespace: postgres-operator
                   name: hippo-pguser-hippo
                   key: port
             - name: DB_DATABASE
               valueFrom:
                 secretKeyRef:
+                  namespace: postgres-operator
                   name: hippo-pguser-hippo
                   key: dbname
             - name: DB_USER
               valueFrom:
                 secretKeyRef:
+                  namespace: postgres-operator
                   name: hippo-pguser-hippo
                   key: user
             - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
+                  namespace: postgres-operator
                   name: hippo-pguser-hippo
                   key: password
