@@ -1,0 +1,12 @@
+# role.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: secret-reader-role
+  namespace: task
+rules:
+- apiGroups: [""]
+  resources: ["secrets"]
+  verbs: ["get"]
+  resourceNames: ["hippo-pguser-hippo"]  # Specify the name of the secret you want to access
+  namespaces: ["postgres-operator"]
