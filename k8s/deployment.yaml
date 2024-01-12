@@ -15,9 +15,10 @@ spec:
       labels:
         app: django-app
     spec:
+      serviceAccountName: default
       containers:
         - name: djando-app
-          image: mokhtar74/simple-ci-cd:redis-postgres-V1
+          image: mokhtar74/simple-ci-cd:redis-postgres-V2
           ports:
             - containerPort: 8000
           env:
