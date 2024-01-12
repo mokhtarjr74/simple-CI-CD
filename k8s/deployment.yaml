@@ -18,7 +18,7 @@ spec:
       serviceAccountName: task-service-account
       containers:
         - name: djando-app
-          image: mokhtar74/simple-ci-cd:redis-postgres-V6
+          image: mokhtar74/simple-ci-cd:redis-postgres-stable
           ports:
             - containerPort: 8000
           env:
