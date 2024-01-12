@@ -21,28 +21,33 @@ spec:
           ports:
             - containerPort: 8000
           env:
-            - name: DB_ADDR
-              valueFrom:
-                secretKeyRef:
-                  name: hippo-pguser-hippo
-                  key: host
-            - name: DB_PORT
-              valueFrom:
-                secretKeyRef:
-                  name: hippo-pguser-hippo
-                  key: port
-            - name: DB_DATABASE
-              valueFrom:
-                secretKeyRef:
-                  name: hippo-pguser-hippo
-                  key: dbname
-            - name: DB_USER
-              valueFrom:
-                secretKeyRef:
-                  name: hippo-pguser-hippo
-                  key: user
-            - name: DB_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: hippo-pguser-hippo
-                  key: password
+          - name: DB_ADDR
+            valueFrom:
+              secretKeyRef:
+                name: hippo-pguser-hippo
+                key: host
+                namespace: postgres-operator
+          - name: DB_PORT
+            valueFrom:
+              secretKeyRef:
+                name: hippo-pguser-hippo
+                key: port
+                namespace: postgres-operator
+          - name: DB_DATABASE
+            valueFrom:
+              secretKeyRef:
+                name: hippo-pguser-hippo
+                key: dbname
+                namespace: postgres-operator
+          - name: DB_USER
+            valueFrom:
+              secretKeyRef:
+                name: hippo-pguser-hippo
+                key: user
+                namespace: postgres-operator
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: hippo-pguser-hippo
+                key: password
+                namespace: postgres-operator
