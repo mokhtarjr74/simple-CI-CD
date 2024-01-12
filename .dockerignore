@@ -5,3 +5,4 @@ __pycache__
 .github/
 Dockerfile
 k8s/
+db.sqlite3

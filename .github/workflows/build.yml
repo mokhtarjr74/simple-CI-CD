@@ -24,7 +24,7 @@ jobs:
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_REPOSITORY: simple-ci-cd
-          IMAGE_TAG: redis
+          IMAGE_TAG: redis-postgres
         run: |
           docker build -t $DOCKER_USERNAME/$DOCKER_REPOSITORY:$IMAGE_TAG .
           docker push $DOCKER_USERNAME/$DOCKER_REPOSITORY:$IMAGE_TAG
