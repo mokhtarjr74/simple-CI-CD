@@ -18,37 +18,37 @@ spec:
       serviceAccountName: default
       containers:
         - name: djando-app
-          image: mokhtar74/simple-ci-cd:redis-postgres-V2
+          image: mokhtar74/simple-ci-cd:redis-postgres-V3
           ports:
             - containerPort: 8000
           env:
-          - name: DB_ADDR
-            valueFrom:
-              secretKeyRef:
-                name: hippo-pguser-hippo
-                key: host
-                namespace: postgres-operator
-          - name: DB_PORT
-            valueFrom:
-              secretKeyRef:
-                name: hippo-pguser-hippo
-                key: port
-                namespace: postgres-operator
-          - name: DB_DATABASE
-            valueFrom:
-              secretKeyRef:
-                name: hippo-pguser-hippo
-                key: dbname
-                namespace: postgres-operator
-          - name: DB_USER
-            valueFrom:
-              secretKeyRef:
-                name: hippo-pguser-hippo
-                key: user
-                namespace: postgres-operator
-          - name: DB_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: hippo-pguser-hippo
-                key: password
-                namespace: postgres-operator
+            - name: DB_ADDR
+              valueFrom:
+                secretKeyRef:
+                  name: hippo-pguser-hippo
+                  key: host
+                  namespace: postgres-operator
+            - name: DB_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: hippo-pguser-hippo
+                  key: port
+                  namespace: postgres-operator
+            - name: DB_DATABASE
+              valueFrom:
+                secretKeyRef:
+                  name: hippo-pguser-hippo
+                  key: dbname
+                  namespace: postgres-operator
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: hippo-pguser-hippo
+                  key: user
+                  namespace: postgres-operator
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: hippo-pguser-hippo
+                  key: password
+                  namespace: postgres-operator
