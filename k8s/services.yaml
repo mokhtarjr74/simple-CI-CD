@@ -10,5 +10,6 @@ spec:
     app: django-app
   type: ClusterIP
   ports:
-    - port: 80
+    - name: app
+      port: 80
       targetPort: 8000
