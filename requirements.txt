@@ -6,3 +6,4 @@ typing_extensions==4.9.0
 django-redis
 redis
 psycopg
+django-prometheus
